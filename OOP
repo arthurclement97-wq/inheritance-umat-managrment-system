@@ -1,0 +1,53 @@
+# 1. Create a parent class Person
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def display_info(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+
+
+# 2. Create child classes
+class Student(Person):
+    def __init__(self, name, age, student_id):
+        # 3. Use super() to initialize inherited attributes
+        super().__init__(name, age)
+        self.student_id = student_id
+
+    def enroll_course(self, course_name):
+        print(f"Student {self.name} has enrolled in {course_name}.")
+
+
+class Lecturer(Person):
+    def __init__(self, name, age, employee_id):
+        # 3. Use super() to initialize inherited attributes
+        super().__init__(name, age)
+        self.employee_id = employee_id
+
+    def teach_course(self, course_name):
+        print(f"Lecturer {self.name} is teaching {course_name}.")
+
+    # 5. Override display_info() to include unique ID while keeping parent's info
+    def display_info(self):
+        super().display_info()
+        print(f"Employee ID: {self.employee_id}")
+
+
+# --- Demonstration ---
+
+# 4. Create one object of each child class
+student1 = Student("Clement", 20, "FOE.41.006.046.25")
+lecturer1 = Lecturer("Dr.Matthew ", 45, "EMP9876")
+
+print("--- Testing Student Object ---")
+# Demonstrating inheritance of display_info()
+student1.display_info()
+# Demonstrating execution of unique method
+student1.enroll_course("Object-Oriented Programming")
+
+print("\n--- Testing Lecturer Object ---")
+# Demonstrating overridden display_info() (includes both parent info and unique ID)
+lecturer1.display_info()
+# Demonstrating execution of unique method
+lecturer1.teach_course("Data Structures")
